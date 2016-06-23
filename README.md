@@ -1,0 +1,2 @@
+# NetCorePlayground
+.NET Core Playgroud
