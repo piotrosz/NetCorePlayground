@@ -1,9 +1,8 @@
 # NetCorePlayground
-.NET Core Playgroud
+.NET Core Playgroud - quantum mechanics spin measurement
 
-Visual Studio Code
+Visual Studio Code test project
 XUnit.NET, FluentAssertions
-
 
 dotnet restore
 dotnet run
