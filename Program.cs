@@ -21,9 +21,24 @@ namespace CSharp6Samples
     public class Class1
     {
         [Fact]
+        public void FailingTest()
+        {
+            5.Should().Be(2 + 2);
+        }
+
+        [Fact]
         public void PassingTest()
         {
-            5.Should().Be(2 + 2);;
+            4.Should().Be(2 + 2);
+        }
+
+        [Theory]
+        [InlineData(3)]
+        [InlineData(5)]
+        [InlineData(6)]
+        public void MyFirstTheory(int value)
+        {
+            (value % 2).Should().Be(1);
         }
     }
 }
