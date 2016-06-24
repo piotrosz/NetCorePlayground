@@ -30,7 +30,7 @@ namespace Quantum
         }
 
         [Fact]
-        public void given_spin_in_state_up_when_spin_measured_and_apparatus_rotated_then_result_is_up()
+        public void given_spin_in_state_up_when_spin_measured_and_apparatus_flipped_then_result_is_down()
         {
             var spin = new Spin(SpinState.Up);
 
@@ -40,6 +40,12 @@ namespace Quantum
 
             measurement1.Should().Be(SpinState.Up);
             measurement2.Should().Be(SpinState.Down);
+        }
+
+        [Fact]
+        public void given_spin_in_state_up_when_apparatus_rotated_by_90_degrees_then_result_is_up_with_50_percent_probability()
+        {
+            
         }
     }
 }

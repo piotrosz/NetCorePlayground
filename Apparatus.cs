@@ -3,6 +3,12 @@ namespace Quantum
     public class Apparatus
     {
         private int rotation;
+        private IRandomNumberService randomNumberService;
+
+        Apparatus(IRandomNumberService randomNumberService)
+        {
+            this.randomNumberService = randomNumberService;
+        }
 
         public SpinState Measure(Spin spin)
         {
