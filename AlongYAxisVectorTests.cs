@@ -23,7 +23,7 @@ namespace Quantum
         {
             var result = SpinVector.ScalarProduct(SpinVectorBase.In, SpinVectorBase.In);
 
-            Abs(result.Real - 1).Should().BeLessThan(0.0001);
+            Abs(result.Magnitude - 1).Should().BeLessThan(0.0001);
         }
 
         [Fact]
@@ -31,7 +31,7 @@ namespace Quantum
         {
             var result = SpinVector.ScalarProduct(SpinVectorBase.Out, SpinVectorBase.Out);
 
-            Abs(result.Real - 1).Should().BeLessThan(0.0001);
+            Abs(result.Magnitude - 1).Should().BeLessThan(0.0001);
         }
 
         [Fact]

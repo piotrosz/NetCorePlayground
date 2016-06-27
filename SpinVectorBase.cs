@@ -27,7 +27,7 @@ namespace Quantum
 
         public static readonly SpinVector Down = new SpinVector(
             upComponent: Complex.Zero,
-            downComponent: new Complex(real: -1, imaginary: 0));
+            downComponent: new Complex(real: 1, imaginary: 0));
         
     }
 }
