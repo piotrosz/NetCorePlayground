@@ -24,7 +24,7 @@ namespace Quantum
         public void r_and_l_are_orthogonal()
         {
             var result = SpinVector.ScalarProduct(left, right);
-            result.Should().Be(0);
+            result.Should().Be(Complex.Zero);
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Quantum
         {
             var result = SpinVector.ScalarProduct(right, right);
 
-            Abs(result - 1).Should().BeLessThan(0.0001);
+            Abs(result.Real - 1).Should().BeLessThan(0.0001);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Quantum
         {
             var result = SpinVector.ScalarProduct(left, left);
 
-            Abs(result - 1).Should().BeLessThan(0.0001);
+            Abs(result.Real - 1).Should().BeLessThan(0.0001);
         }
     }
 }

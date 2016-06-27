@@ -16,14 +16,14 @@ namespace Quantum
         public Complex UpComponent { get; private set; }
         public Complex DownComponent { get; private set; }
 
-        public static double ScalarProduct(SpinVector vector1, SpinVector vector2)
+        public static Complex ScalarProduct(SpinVector vector1, SpinVector vector2)
         {
             //WriteLine(vector1);
             //WriteLine(vector2);
             //WriteLine($"{Conjugate(vector1.UpComponent)} * {vector2.UpComponent} + {Conjugate(vector2.DownComponent)} * {vector2.DownComponent}");
 
             return (Conjugate(vector1.UpComponent) * vector2.UpComponent + 
-                   Conjugate(vector1.DownComponent) * vector2.DownComponent).Real;
+                   Conjugate(vector1.DownComponent) * vector2.DownComponent);
         }
 
         public override string ToString()
