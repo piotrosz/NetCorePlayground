@@ -16,8 +16,8 @@ namespace Quantum
         public void given_spin_in_state_up_when_spin_measured_then_result_is_up()
         {
             var spin = new Spin(SpinState.Up);
-            SpinState measurementResult = apparatus.Measure(spin);
-            measurementResult.Should().Be(SpinState.Up);
+            var measurementResult = apparatus.Measure(spin);
+            measurementResult.Value.Should().Be(1);
         }
 
         [Fact]
@@ -25,8 +25,8 @@ namespace Quantum
         {
             var spin = new Spin(SpinState.Up);
             apparatus.Measure(spin);
-            SpinState measurementResult = apparatus.Measure(spin);            
-            measurementResult.Should().Be(SpinState.Up);
+            var measurementResult = apparatus.Measure(spin);            
+            measurementResult.Value.Should().Be(1);
         }
 
         [Fact]
@@ -38,8 +38,8 @@ namespace Quantum
             apparatus.Rotate(180);
             var measurement2 = apparatus.Measure(spin);
 
-            measurement1.Should().Be(SpinState.Up);
-            measurement2.Should().Be(SpinState.Down);
+            measurement1.Value.Should().Be(1);
+            measurement2.Value.Should().Be(-1);
         }
 
         [Fact]

@@ -1,29 +1,16 @@
+using System;
+
 namespace Quantum
 {
     public class Apparatus
     {
         private int rotation;
-        private IRandomNumberService randomNumberService;
 
-        Apparatus(IRandomNumberService randomNumberService)
+        public SpinAverageValue Measure(Spin spin)
         {
-            this.randomNumberService = randomNumberService;
-        }
-
-        public SpinState Measure(Spin spin)
-        {
-            if(rotation == 0)
-            {
-                return spin.SpinState;
-            }
-            if(rotation == 180)
-            {
-                return spin.SpinState == SpinState.Up ?
-                        SpinState.Down :
-                        SpinState.Up;
-            }  
-
-            return spin.SpinState;     
+            double radians = (Math.PI / 180) * rotation;
+            double average = Math.Cos(Convert.ToDouble(radians));
+            return new SpinAverageValue(average);
         }
 
         public void Rotate(int degrees)
