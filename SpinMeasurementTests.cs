@@ -1,5 +1,6 @@
 using FluentAssertions;
 using Xunit;
+using static System.Math;
 
 namespace Quantum
 {
@@ -45,7 +46,11 @@ namespace Quantum
         [Fact]
         public void given_spin_in_state_up_when_apparatus_rotated_by_90_degrees_then_result_is_up_with_50_percent_probability()
         {
-            
+            var spin = new Spin(SpinState.Up);
+
+            apparatus.Rotate(90);
+            var measurement = apparatus.Measure(spin);
+            Abs(measurement.Value).Should().BeLessThan(0.00001);
         }
     }
 }

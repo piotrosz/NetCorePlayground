@@ -1,4 +1,5 @@
 using System;
+using static System.Math;
 
 namespace Quantum
 {
@@ -8,8 +9,8 @@ namespace Quantum
 
         public SpinAverageValue Measure(Spin spin)
         {
-            double radians = (Math.PI / 180) * rotation;
-            double average = Math.Cos(Convert.ToDouble(radians));
+            double rotationInRadians = (PI / 180) * rotation;
+            double average = Cos(rotationInRadians);
             return new SpinAverageValue(average);
         }
 
