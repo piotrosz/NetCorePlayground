@@ -5,12 +5,12 @@ using static System.Math;
 
 namespace Quantum
 {
-    public class SpinVectorTests
+    public class AlongXAxisVectorsTests
     {
         SpinVector left;
         SpinVector right;
 
-        public SpinVectorTests()
+        public AlongXAxisVectorsTests()
         {
             left = new SpinVector(upComponent: new Complex(real: 1/Sqrt(2), imaginary: 0),
                                   downComponent: new Complex(real: 1/Sqrt(2), imaginary: 0));
@@ -42,7 +42,5 @@ namespace Quantum
 
             Abs(result - 1).Should().BeLessThan(0.0001);
         }
-
-
     }
 }
