@@ -5,7 +5,7 @@ using static System.Math;
 
 namespace Quantum
 {
-    public class AlongYAxisVectorsTests
+    public class AlongYAxisTests
     {
         // test if i and o are orthonormal
         [Fact]

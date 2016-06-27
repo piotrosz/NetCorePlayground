@@ -5,7 +5,7 @@ using static System.Math;
 
 namespace Quantum
 {
-    public class AlongXAxisVectorsTests
+    public class AlongXAxisTests
     {
         // test if r and l are orthonormal
         [Fact]
