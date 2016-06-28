@@ -1,6 +1,7 @@
 using Xunit;
 using FluentAssertions;
 using System.Numerics;
+using System;
 
 namespace Quantum
 {
@@ -15,12 +16,23 @@ namespace Quantum
             matrix[1, 0] = new Complex(3, 3);
             matrix[1, 1] = new Complex(4, 0);
 
-            var result = Matrix.Transpose(matrix);
+            var result = matrix.Transpose();
 
             result[0, 0].Should().Be(matrix[0, 0]);
             result[1, 1].Should().Be(matrix[1, 1]);
             result[0, 1].Should().Be(matrix[1, 0]);
             result[1, 0].Should().Be(matrix[0, 1]);
+        }
+
+        [Fact]
+        public void martix_initialized()
+        {
+            var matrix = new Matrix(new Complex[,] {
+                {1, 2},
+                {3, 4}
+            });
+
+            Console.WriteLine(matrix);
         }
     }
 }

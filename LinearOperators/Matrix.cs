@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 using System.Text;
 
@@ -6,13 +7,18 @@ namespace Quantum
     public class Matrix
     {
         private readonly Complex[,] _matrix;
-        public Matrix(int dim1, int dim2)
+        public Matrix(int columns, int rows)
         {
-            _matrix = new Complex[dim1, dim2];
+            _matrix = new Complex[columns, rows];
         }
 
-        public int Height { get { return _matrix.GetLength(0); } }
-        public int Width { get { return _matrix.GetLength(1); } }
+        public Matrix(Complex[,] matrix)
+        {
+            _matrix = matrix;
+        }
+
+        public int Rows { get { return _matrix.GetLength(0); } }
+        public int Columns { get { return _matrix.GetLength(1); } }
 
         public Complex this[int x, int y]
         {
@@ -22,15 +28,20 @@ namespace Quantum
 
         public static Matrix NaiveMultiplication(Matrix m1, Matrix m2)
         {
-            var resultMatrix = new Matrix(m1.Height, m2.Width);
-            for (int i = 0; i < resultMatrix.Height; i++)
+            // if (m1.Rows != m2.Columns)
+            // {
+            //     throw new Exception("m1.Columns != m2.Rows");    
+            // }
+
+            var resultMatrix = new Matrix(m1.Rows, m2.Columns);
+            for (int row = 0; row < resultMatrix.Rows; row++)
             {
-                for (int j = 0; j < resultMatrix.Width; j++)
+                for (int column = 0; column < resultMatrix.Columns; column++)
                 {
-                    resultMatrix[i, j] = 0;
-                    for (int k = 0; k < m1.Width; k++)
+                    resultMatrix[row, column] = 0;
+                    for (int k = 0; k < m1.Columns; k++)
                     {
-                        resultMatrix[i, j] += m1[i, k] * m2[k, j];
+                        resultMatrix[row, column] += m1[row, k] * m2[k, column];
                     }
                 }
             }
@@ -39,25 +50,12 @@ namespace Quantum
 
         public static Matrix MultiplyByNumber(Matrix m, Complex c)
         {
-            var resultMatrix = new Matrix(m.Height, m.Width);
-            for (int i = 0; i < resultMatrix.Height; i++)
+            var resultMatrix = new Matrix(m.Rows, m.Columns);
+            for (int row = 0; row < resultMatrix.Rows; row++)
             {
-                for (int j = 0; j < resultMatrix.Width; j++)
+                for (int column = 0; column < resultMatrix.Columns; column++)
                 {
-                    resultMatrix[i, j] = m[i, j] * c;
-                }
-            }
-            return resultMatrix;
-        }
-
-        public static Matrix Transpose(Matrix m)
-        {
-            var resultMatrix = new Matrix(m.Width, m.Height);
-            for (int i = 0; i < resultMatrix.Height; i++)
-            {
-                for (int j = 0; j < resultMatrix.Width; j++)
-                {
-                    resultMatrix[i, j] = m[j, i];
+                    resultMatrix[row, column] = m[row, column] * c;
                 }
             }
             return resultMatrix;
@@ -66,15 +64,28 @@ namespace Quantum
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
-            for (int i = 0; i < this.Width; i++)
+            // for (int column = 0; column < this.Columns; column++)
+            // {
+            //     stringBuilder.AppendLine();
+            //     for (int row = 0; row < this.Rows; row++)
+            //     {
+            //         stringBuilder.Append($" {this[row, column]}");
+            //     }
+            // }
+            
+            for (int r = 0; r < this.Rows; r++)
             {
                 stringBuilder.AppendLine();
-                for (int j = 0; j < this.Height; j++)
+                for (int c = 0; c < this.Columns; c++)
                 {
-                    stringBuilder.Append($" {this[j, i]}");
+                    stringBuilder.Append($" {this[r, c]}");
                 }
             }
+            
+
             return stringBuilder.ToString();
+
+
         }
 
         public static Matrix operator *(Matrix left, Matrix right) 

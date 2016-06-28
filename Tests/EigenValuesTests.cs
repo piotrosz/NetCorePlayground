@@ -16,25 +16,20 @@ namespace Quantum
             M[1, 0] = new Complex(real: -1, imaginary: 0);
             M[1, 1] = Complex.Zero;
 
-            // Console.WriteLine("M:");
-            // Console.WriteLine(M);
-            // Console.WriteLine();
-
+            //Console.WriteLine($"M: {Environment.NewLine}{M}{Environment.NewLine}");
+             
             var v = new Matrix(1, 2);
             v[0, 0] = Complex.One;
             v[0, 1] = Complex.ImaginaryOne;
 
-            // Console.WriteLine($"v: {v.Height} {v.Width}");
-            // Console.WriteLine(v);
+            //Console.WriteLine($"v: {Environment.NewLine}{v}{Environment.NewLine}");
 
             var result = Matrix.NaiveMultiplication(v, M);
-            // Console.WriteLine("result: ");
-            // Console.WriteLine(result);
+            //Console.WriteLine($"result: {Environment.NewLine}{result}{Environment.NewLine}");
 
             var expected = Matrix.MultiplyByNumber(v, new Complex(real: 0, imaginary: -1));
-            // Console.WriteLine("expected: ");
-            // Console.WriteLine(expected);
-
+            //Console.WriteLine($"expected: {Environment.NewLine}{expected}{Environment.NewLine}");
+            
             result[0, 0].Should().Be(expected[0, 0]);
             result[0, 1].Should().Be(expected[0, 1]);
         }

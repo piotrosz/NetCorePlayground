@@ -7,11 +7,11 @@ namespace Quantum
         public static bool IsHermitian(this Matrix m)
         {
             bool result = true;
-            for (int i = 0; i < m.Height; i++)
+            for (int row = 0; row < m.Rows; row++)
             {
-                for (int j = 0; j < m.Width; j++)
+                for (int column = 0; column < m.Columns; column++)
                 {
-                    if(m[i, j] != Complex.Conjugate(m[j, i]))
+                    if(m[row, column] != Complex.Conjugate(m[column, row]))
                     {
                         return false;
                     }
@@ -19,6 +19,19 @@ namespace Quantum
             }
 
             return result;
+        }
+
+        public static Matrix Transpose(this Matrix m)
+        {
+            var resultMatrix = new Matrix(m.Columns, m.Rows);
+            for (int row = 0; row < resultMatrix.Rows; row++)
+            {
+                for (int column = 0; column < resultMatrix.Columns; column++)
+                {
+                    resultMatrix[row, column] = m[column, row];
+                }
+            }
+            return resultMatrix;
         }
     }
 }

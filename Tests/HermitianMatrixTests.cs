@@ -8,7 +8,7 @@ namespace Quantum
     {
         [Fact]
         public void is_hermitian()
-        {
+        {            
             var martix = new Matrix(2, 2);
             martix[0, 0] = new Complex(2, 0);
             martix[0, 1] = new Complex(2, 4);
