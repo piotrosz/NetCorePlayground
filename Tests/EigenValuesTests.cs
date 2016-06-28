@@ -12,7 +12,7 @@ namespace Quantum
         {
             var M = new Matrix(2, 2);
             M[0, 0] = Complex.Zero;
-            M[0, 1] = new Complex(real: 1, imaginary: 0);
+            M[0, 1] = Complex.One;
             M[1, 0] = new Complex(real: -1, imaginary: 0);
             M[1, 1] = Complex.Zero;
 
@@ -21,8 +21,8 @@ namespace Quantum
             // Console.WriteLine();
 
             var v = new Matrix(1, 2);
-            v[0, 0] = new Complex(real: 1, imaginary: 0);
-            v[0, 1] = new Complex(real: 0, imaginary: 1);
+            v[0, 0] = Complex.One;
+            v[0, 1] = Complex.ImaginaryOne;
 
             // Console.WriteLine($"v: {v.Height} {v.Width}");
             // Console.WriteLine(v);
