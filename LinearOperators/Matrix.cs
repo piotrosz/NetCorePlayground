@@ -76,5 +76,10 @@ namespace Quantum
             }
             return stringBuilder.ToString();
         }
+
+        public static Matrix operator *(Matrix left, Matrix right) 
+        {   
+            return Matrix.NaiveMultiplication(left, right);
+        }
     }
 }

@@ -6,19 +6,19 @@ namespace Quantum
     public static class SpinVectorBase
     {
         public static readonly SpinVector Left = new SpinVector(
-            upComponent: new Complex(real: 1/Sqrt(2), imaginary: 0),
-            downComponent: new Complex(real: 1/Sqrt(2), imaginary: 0));
+            upComponent: 1/Sqrt(2),
+            downComponent: 1/Sqrt(2));
 
         public static readonly SpinVector Right = new SpinVector(
-            upComponent: new Complex(real: 1/Sqrt(2), imaginary: 0),
-            downComponent: new Complex(real: -1/Sqrt(2), imaginary: 0));
+            upComponent: 1/Sqrt(2),
+            downComponent: -1/Sqrt(2));
 
         public static readonly SpinVector In = new SpinVector(
-            upComponent: new Complex(real: 1/Sqrt(2), imaginary: 0),
+            upComponent: 1/Sqrt(2),
             downComponent: new Complex(real: 0, imaginary: 1/Sqrt(2)));
 
         public static readonly SpinVector Out = new SpinVector(
-            upComponent: new Complex(real: 1/Sqrt(2), imaginary: 0),
+            upComponent: 1/Sqrt(2),
             downComponent: new Complex(real: 0, imaginary: -1/Sqrt(2)));
 
         public static readonly SpinVector Up = new SpinVector(
