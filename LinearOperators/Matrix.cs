@@ -28,10 +28,10 @@ namespace Quantum
 
         public static Matrix NaiveMultiplication(Matrix m1, Matrix m2)
         {
-            // if (m1.Rows != m2.Columns)
-            // {
-            //     throw new Exception("m1.Columns != m2.Rows");    
-            // }
+            if (m1.Columns != m2.Rows)
+            {
+                throw new Exception("m1.Columns != m2.Rows");    
+            }
 
             var resultMatrix = new Matrix(m1.Rows, m2.Columns);
             for (int row = 0; row < resultMatrix.Rows; row++)
@@ -64,15 +64,6 @@ namespace Quantum
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
-            // for (int column = 0; column < this.Columns; column++)
-            // {
-            //     stringBuilder.AppendLine();
-            //     for (int row = 0; row < this.Rows; row++)
-            //     {
-            //         stringBuilder.Append($" {this[row, column]}");
-            //     }
-            // }
-            
             for (int r = 0; r < this.Rows; r++)
             {
                 stringBuilder.AppendLine();
@@ -81,8 +72,6 @@ namespace Quantum
                     stringBuilder.Append($" {this[r, c]}");
                 }
             }
-            
-
             return stringBuilder.ToString();
 
 
@@ -91,6 +80,89 @@ namespace Quantum
         public static Matrix operator *(Matrix left, Matrix right) 
         {   
             return Matrix.NaiveMultiplication(left, right);
+        }
+
+        public static bool operator ==(Matrix a, Matrix b)
+        {
+            if (System.Object.ReferenceEquals(a, b))
+            {
+                return true;
+            }
+
+            if (((object)a == null) || ((object)b == null))
+            {
+                return false;
+            }
+
+            return InternalEquals(a, b);
+        }
+
+        public static bool operator !=(Matrix a, Matrix b)
+        {
+            return !(a == b);
+        }
+
+        public static Matrix operator *(Complex c, Matrix m)
+        {
+            return MultiplyByNumber(m, c);
+        }
+
+        public override bool Equals(System.Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            var m = obj as Matrix;
+            if ((System.Object)m == null)
+            {
+                return false;
+            }
+
+            return InternalEquals(m, this);
+        }
+
+        public bool Equals(Matrix m)
+        {
+            // If parameter is null return false:
+            if ((object)m == null)
+            {
+                return false;
+            }
+
+            return InternalEquals(m, this);
+        }
+
+        public override int GetHashCode()
+        {
+            return _matrix.GetHashCode();
+        }
+
+        private static bool InternalEquals(Matrix a, Matrix b)
+        {
+            if(a.Columns != b.Columns)
+            {
+                return false;
+            }
+
+            if(a.Rows != b.Rows)
+            {
+                return false;
+            }
+
+            for (int r = 0; r < a.Rows; r++)
+            {
+                for (int c = 0; c < a.Columns; c++)
+                {
+                    if(a[r, c] != b[r ,c])
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

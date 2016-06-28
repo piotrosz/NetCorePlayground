@@ -7,11 +7,11 @@ namespace Quantum
     {
         public static readonly SpinVector Left = new SpinVector(
             upComponent: 1/Sqrt(2),
-            downComponent: 1/Sqrt(2));
+            downComponent: -1/Sqrt(2));
 
         public static readonly SpinVector Right = new SpinVector(
             upComponent: 1/Sqrt(2),
-            downComponent: -1/Sqrt(2));
+            downComponent: 1/Sqrt(2));
 
         public static readonly SpinVector In = new SpinVector(
             upComponent: 1/Sqrt(2),
