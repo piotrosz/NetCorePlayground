@@ -22,7 +22,7 @@ namespace Quantum
 
         public static Matrix NaiveMultiplication(Matrix m1, Matrix m2)
         {
-            Matrix resultMatrix = new Matrix(m1.Height, m2.Width);
+            var resultMatrix = new Matrix(m1.Height, m2.Width);
             for (int i = 0; i < resultMatrix.Height; i++)
             {
                 for (int j = 0; j < resultMatrix.Width; j++)
@@ -39,12 +39,25 @@ namespace Quantum
 
         public static Matrix MultiplyByNumber(Matrix m, Complex c)
         {
-            Matrix resultMatrix = new Matrix(m.Height, m.Width);
+            var resultMatrix = new Matrix(m.Height, m.Width);
             for (int i = 0; i < resultMatrix.Height; i++)
             {
                 for (int j = 0; j < resultMatrix.Width; j++)
                 {
                     resultMatrix[i, j] = m[i, j] * c;
+                }
+            }
+            return resultMatrix;
+        }
+
+        public static Matrix Transpose(Matrix m)
+        {
+            var resultMatrix = new Matrix(m.Width, m.Height);
+            for (int i = 0; i < resultMatrix.Height; i++)
+            {
+                for (int j = 0; j < resultMatrix.Width; j++)
+                {
+                    resultMatrix[i, j] = m[j, i];
                 }
             }
             return resultMatrix;
