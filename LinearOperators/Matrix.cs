@@ -1,6 +1,7 @@
 using System.Numerics;
+using System.Text;
 
-namespace Quantum.LinearOperators
+namespace Quantum
 {
     public class Matrix
     {
@@ -34,6 +35,33 @@ namespace Quantum.LinearOperators
                 }
             }
             return resultMatrix;
+        }
+
+        public static Matrix MultiplyByNumber(Matrix m, Complex c)
+        {
+            Matrix resultMatrix = new Matrix(m.Height, m.Width);
+            for (int i = 0; i < resultMatrix.Height; i++)
+            {
+                for (int j = 0; j < resultMatrix.Width; j++)
+                {
+                    resultMatrix[i, j] = m[i, j] * c;
+                }
+            }
+            return resultMatrix;
+        }
+
+        public override string ToString()
+        {
+            var stringBuilder = new StringBuilder();
+            for (int i = 0; i < this.Width; i++)
+            {
+                stringBuilder.AppendLine();
+                for (int j = 0; j < this.Height; j++)
+                {
+                    stringBuilder.Append($" {this[j, i]}");
+                }
+            }
+            return stringBuilder.ToString();
         }
     }
 }
