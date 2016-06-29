@@ -1,8 +1,8 @@
 namespace Quantum
 {
-    public class Comutator
+    public static class Comutator
     {
-        public Matrix Calculate(Matrix m1, Matrix m2)
+        public static Matrix Calculate(Matrix m1, Matrix m2)
         {
             return m1 * m2 - m2 * m1;
         }
