@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using static System.Console;
 
 namespace Quantum 
 {
@@ -12,8 +13,11 @@ namespace Quantum
                 throw new Exception("Lengths must be equal");
             }
 
-            double sigma_A_avg = sigma_A_set.Sum() / (double)sigma_A_set.Length;
-            double sigma_B_avg = sigma_B_set.Sum() / (double)sigma_B_set.Length;
+            double sigma_A_avg = sigma_A_set.Sum() / sigma_A_set.Length;
+            double sigma_B_avg = sigma_B_set.Sum() / sigma_B_set.Length;
+
+            //WriteLine($"sigma_A_avg: {sigma_A_avg}");
+            //WriteLine($"sigma_B_avg: {sigma_A_avg}");
 
             double sigma_A_sigma_B_avg = 0;
             for (int i = 0; i < sigma_A_set.Length; i++)
@@ -21,10 +25,9 @@ namespace Quantum
                 sigma_A_sigma_B_avg += sigma_A_set[i] * sigma_B_set[i];
             }
 
-            sigma_A_sigma_B_avg = sigma_A_sigma_B_avg / (double)sigma_A_set.Length;
+            sigma_A_sigma_B_avg = sigma_A_sigma_B_avg / sigma_A_set.Length;
 
             return sigma_A_sigma_B_avg - (sigma_A_avg * sigma_B_avg);
         }    
-    }
-    
+    }    
 }
