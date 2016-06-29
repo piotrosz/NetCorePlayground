@@ -21,6 +21,19 @@ namespace Quantum
             return result;
         }
 
+        public static Matrix HermitianConjugate(this Matrix m)
+        {
+            var resultMatrix = new Matrix(m.Columns, m.Rows);
+            for (int row = 0; row < resultMatrix.Rows; row++)
+            {
+                for (int column = 0; column < resultMatrix.Columns; column++)
+                {
+                    resultMatrix[row, column] = Complex.Conjugate(m[column, row]);
+                }
+            }
+            return resultMatrix;
+        }
+
         public static Matrix Transpose(this Matrix m)
         {
             var resultMatrix = new Matrix(m.Columns, m.Rows);
