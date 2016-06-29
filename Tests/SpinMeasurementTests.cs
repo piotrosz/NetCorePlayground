@@ -52,6 +52,15 @@ namespace Quantum
             var measurement = apparatus.Measure(spin);
             Abs(measurement.Value).Should().BeLessThan(0.00001);
         }
+
+        [Fact]
+        public void given_spin_in_state_down_when_apparatus_then_result_is_down()
+        {
+            var spin = new Spin(SpinState.Down);
+
+            var measurement = apparatus.Measure(spin);
+            measurement.Value.Should().Be(-1);
+        }
     }
 }
 

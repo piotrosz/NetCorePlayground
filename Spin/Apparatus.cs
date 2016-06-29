@@ -10,6 +10,12 @@ namespace Quantum
         public SpinAverageValue Measure(Spin spin)
         {
             double rotationInRadians = (PI / 180) * rotation;
+            
+            if(spin.SpinState == SpinState.Down)
+            {
+                rotationInRadians += PI;   
+            }
+            
             double average = Cos(rotationInRadians);
             return new SpinAverageValue(average);
         }
