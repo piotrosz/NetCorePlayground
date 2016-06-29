@@ -20,9 +20,7 @@ namespace Quantum
             return new SpinAverageValue(average);
         }
 
-        public void Rotate(int degrees)
-        {
-            rotation = (rotation + degrees) % 360;
-        }
+        public void Rotate(int degrees) 
+         => rotation = (rotation + degrees) % 360;
     }
 }

@@ -77,11 +77,9 @@ namespace Quantum
 
         }
 
-        public static Matrix operator *(Matrix left, Matrix right) 
-        {   
-            return Matrix.NaiveMultiplication(left, right);
-        }
-
+        public static Matrix operator *(Matrix left, Matrix right)
+         => Matrix.NaiveMultiplication(left, right);
+        
         public static bool operator ==(Matrix a, Matrix b)
         {
             if (System.Object.ReferenceEquals(a, b))
@@ -98,14 +96,10 @@ namespace Quantum
         }
 
         public static bool operator !=(Matrix a, Matrix b)
-        {
-            return !(a == b);
-        }
-
-        public static Matrix operator *(Complex c, Matrix m)
-        {
-            return MultiplyByNumber(m, c);
-        }
+         => !(a == b);
+        
+        public static Matrix operator *(Complex c, Matrix m) 
+         => MultiplyByNumber(m, c); 
 
         public static Matrix operator -(Matrix a, Matrix b)
         {

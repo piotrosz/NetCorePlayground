@@ -6,11 +6,10 @@ namespace Quantum
     {
         public static Matrix ToMatrix(this SpinVector spinVector)
         {
-            var m = new Matrix(new Complex[,] {
+            return new Matrix(new Complex[,] {
                 {spinVector.UpComponent},
                 {spinVector.DownComponent}
             });
-            return m;
         }
     }
 }
