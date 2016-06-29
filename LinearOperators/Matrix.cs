@@ -107,6 +107,25 @@ namespace Quantum
             return MultiplyByNumber(m, c);
         }
 
+        public static Matrix operator -(Matrix a, Matrix b)
+        {
+            if(a.Rows != b.Rows || a.Columns != b.Columns)
+            {
+                throw new Exception("Cannot substract matrices");
+            }
+
+            var resultMatrix = new Matrix(a.Rows, a.Columns);
+            for (int r = 0; r < a.Rows; r++)
+            {
+                for (int c = 0; c < a.Columns; c++)
+                {
+                    resultMatrix[r, c] = a[r, c] - b[r, c];
+                }
+            }
+
+            return resultMatrix;
+        }
+
         public override bool Equals(System.Object obj)
         {
             if (obj == null)
