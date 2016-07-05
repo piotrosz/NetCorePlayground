@@ -72,5 +72,18 @@ namespace Quantum
 
             return result;
         }
+
+        public static Complex Abs(this Matrix m)
+        {
+            Complex result = 0;
+            for (int row = 0; row < m.Rows; row++)
+            {
+                for (int col = 0; col < m.Columns; col++)
+                {
+                    result += Complex.Conjugate(m[row, col]) * m[row, col];
+                }
+            }
+            return result;
+        }
     }
 }

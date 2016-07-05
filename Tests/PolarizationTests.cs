@@ -29,6 +29,15 @@ namespace Quantum
             Complex.Abs(result).Should().BeLessThan(0.0001);
         }
 
+        [Fact]
+        public void state_vectors_are_normalized()
+        {
+            var result1 = Polarization.FortyFiveDegreesStateVector.Abs();
+            var result2 = Polarization.MinusFortyFiveDegreesStateVector.Abs();
+
+            result1.Should().Be(new Complex(1, 0));
+            result2.Should().Be(new Complex(1, 0));
+        }
         
     }
 }
