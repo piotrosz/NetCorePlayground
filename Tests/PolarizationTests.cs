@@ -35,8 +35,11 @@ namespace Quantum
             var result1 = Polarization.FortyFiveDegreesStateVector.Abs();
             var result2 = Polarization.MinusFortyFiveDegreesStateVector.Abs();
 
-            result1.Should().Be(new Complex(1, 0));
-            result2.Should().Be(new Complex(1, 0));
+            Math.Abs(result1.Real - 1 ).Should().BeLessThan(0.00001);
+            Math.Abs(result2.Real - 1 ).Should().BeLessThan(0.00001);
+            Math.Abs(result1.Imaginary).Should().BeLessThan(0.00001);
+            Math.Abs(result2.Imaginary).Should().BeLessThan(0.00001);
+
         }
         
     }

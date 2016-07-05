@@ -57,6 +57,9 @@ namespace Quantum
             var result1 = m1.ScalarProduct(m2);
             var result2 = m2.ScalarProduct(m1);
 
+            //Console.WriteLine(result1);
+            //Console.WriteLine(result2);
+
             result1.Should().Be(new Complex(15, 0));
             result2.Should().Be(new Complex(15, 0));
         }
@@ -66,21 +69,24 @@ namespace Quantum
         {
             var m1 = new Matrix(new Complex[,] 
             { 
-                {1}, 
-                {2} 
+                {new Complex(1, 5)}, 
+                {new Complex(-1, -9)} 
             });
 
             var m2 = new Matrix(new Complex[,] 
             { 
-                {3}, 
-                {6} 
+                {new Complex(0, 7)}, 
+                {new Complex(6, 3)} 
             });
 
             var result1 = m1.ScalarProduct(m2);
             var result2 = m2.ScalarProduct(m1);
 
-            result1.Should().Be(new Complex(15, 0));
-            result2.Should().Be(new Complex(15, 0));
+            //Console.WriteLine(result1);
+            //Console.WriteLine(result2);
+
+            result1.Should().Be(new Complex(2, 58));
+            result2.Should().Be(new Complex(2, -58));
         }
     }
 }
