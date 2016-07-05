@@ -36,7 +36,7 @@ namespace Quantum
             });
 
             //Console.WriteLine(matrix);
-            matrix.ToString().Should().Be($"{Environment.NewLine}   (1, 0)   (2, 0){Environment.NewLine}   (3, 0)   (4, 0)");
+            matrix.ToString().Should().Be($"{Environment.NewLine}  (1, 0)  (2, 0){Environment.NewLine}  (3, 0)  (4, 0)");
         }
     }
 }
