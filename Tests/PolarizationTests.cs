@@ -99,5 +99,14 @@ namespace Quantum
             var result = Polarization.ThetaOperator(theta) * Polarization.ThetaState(theta);
             (result == Polarization.ThetaState(theta)).Should().BeTrue();
         }
+
+        [Theory]
+        [InlineData(0.4)]
+        public void theta_operator_acting_on_theta_orthogonal_vector_gives_minus_orthogonal_theta_vector(double theta)
+        {
+            var result = Polarization.ThetaOperator(theta) * Polarization.ThetaOrthogonalState(theta);
+            (result == -1 * Polarization.ThetaOrthogonalState(theta)).Should().BeTrue();
+        }
+        
     }
 }
