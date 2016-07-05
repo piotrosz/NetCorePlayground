@@ -108,5 +108,11 @@ namespace Quantum
             (result == -1 * Polarization.ThetaOrthogonalState(theta)).Should().BeTrue();
         }
         
+        [Theory]
+        [InlineData(0.3)]
+        public void theta_operator_is_hermitian(double theta)
+        {
+            Polarization.ThetaOperator(theta).IsHermitian().Should().BeTrue();
+        }
     }
 }
