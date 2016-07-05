@@ -12,7 +12,7 @@ namespace Quantum
         {
             var result = Polarization.PolatizationOperator * Polarization.HorizontalStateVector;
             (result == Polarization.HorizontalStateVector).Should().BeTrue();
-            Console.WriteLine(result);
+            //Console.WriteLine(result);
         }
 
         [Fact]
@@ -21,5 +21,14 @@ namespace Quantum
             var result = Polarization.PolatizationOperator * Polarization.VerticalStateVector;
             (result == -1 * Polarization.VerticalStateVector).Should().BeTrue();
         }
+
+        [Fact]
+        public void state_vectors_are_orthogonal()
+        {
+            var result =  Polarization.FortyFiveDegreesStateVector.ScalarProduct(Polarization.MinusFortyFiveDegreesStateVector);
+            Complex.Abs(result).Should().BeLessThan(0.0001);
+        }
+
+        
     }
 }

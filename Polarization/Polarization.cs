@@ -1,4 +1,5 @@
 using System.Numerics;
+using static System.Math;
 
 namespace Quantum
 {
@@ -20,6 +21,18 @@ namespace Quantum
         {
             {1, 0},
             {0, -1}
+        });
+
+        public static readonly Matrix FortyFiveDegreesStateVector = new Matrix(new Complex[,]
+        {
+            {1/Sqrt(2)},
+            {1/Sqrt(2)}
+        });
+
+        public static readonly Matrix MinusFortyFiveDegreesStateVector = new Matrix(new Complex[,]
+        {
+            {1/Sqrt(2)},
+            {-1/Sqrt(2)}
         });
     }
 }

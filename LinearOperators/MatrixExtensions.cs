@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 
 namespace Quantum
@@ -45,6 +46,31 @@ namespace Quantum
                 }
             }
             return resultMatrix;
+        }
+
+        public static Complex ScalarProduct(this Matrix m1, Matrix m2)
+        {
+            Complex result = 0;
+            if(m1.Rows == m2.Rows && m1.Columns == 1 && m2.Columns == 1)
+            {
+                for (int row = 0; row < m1.Rows; row++)
+                {
+                    result += Complex.Conjugate(m1[row, 0]) * m2[row, 0];
+                }
+            }
+            else if(m1.Columns == m2.Columns && m1.Rows == 1 && m2.Rows == 1)
+            {
+                for (int col = 0; col < m2.Columns; col++)
+                {
+                    result += Complex.Conjugate(m1[0, col]) * m2[0, col];
+                }
+            }
+            else
+            {
+                throw new Exception("Cannot calculate scalar product");
+            }
+
+            return result;
         }
     }
 }
