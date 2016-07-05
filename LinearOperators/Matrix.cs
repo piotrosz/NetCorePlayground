@@ -69,12 +69,10 @@ namespace Quantum
                 stringBuilder.AppendLine();
                 for (int c = 0; c < this.Columns; c++)
                 {
-                    stringBuilder.Append($" {this[r, c]}");
+                    stringBuilder.Append($" {this[r, c].ToString().PadLeft(8)}");
                 }
             }
             return stringBuilder.ToString();
-
-
         }
 
         public static Matrix operator *(Matrix left, Matrix right)
