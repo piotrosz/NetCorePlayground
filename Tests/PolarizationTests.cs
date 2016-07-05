@@ -1,0 +1,25 @@
+using System;
+using System.Numerics;
+using FluentAssertions;
+using Xunit;
+
+namespace Quantum
+{
+    public class PolarizationTests
+    {
+        [Fact]
+        public void polarization_operator_acting_on_horizontal_state_gives_horizontal_state()
+        {
+            var result = Polarization.PolatizationOperator * Polarization.HorizontalStateVector;
+            (result == Polarization.HorizontalStateVector).Should().BeTrue();
+            Console.WriteLine(result);
+        }
+
+        [Fact]
+        public void polarization_operator_acting_on_vertical_state_gives_minus_vertical_state()
+        {
+            var result = Polarization.PolatizationOperator * Polarization.VerticalStateVector;
+            (result == -1 * Polarization.VerticalStateVector).Should().BeTrue();
+        }
+    }
+}
