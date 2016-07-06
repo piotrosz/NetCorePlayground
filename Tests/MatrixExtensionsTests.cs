@@ -112,5 +112,19 @@ namespace Quantum
 
             m.IsIdentity().Should().BeFalse();
         }
+
+        // [Fact]
+        // public void is_unitary_matrix()
+        // {
+        //     double x = 2*Math.Sqrt(2);
+
+        //     var m = new Matrix(new Complex[,]
+        //     {
+        //         {new Complex(1/x, 1/x), new Complex(1/x, -1/x)},
+        //         {new Complex(-1/x, -1/x), new Complex(1/x, -1/x)}
+        //     });
+
+        //     m.IsUnitary().Should().BeTrue();
+        // }
     }
 }

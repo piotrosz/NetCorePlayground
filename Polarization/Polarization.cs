@@ -59,18 +59,19 @@ namespace Quantum
             {Sin(2*theta), -Cos(2*theta)}
         });
 
-        public static readonly Matrix MysteryState = new Matrix(new Complex[,] 
+        public static readonly Matrix CircularPolarizationState = new Matrix(new Complex[,] 
         {
             {1/Sqrt(2)}, 
             {new Complex(0, 1/Sqrt(2))},
         });
 
-        public static readonly Matrix MysteryOthogonalState = new Matrix(new Complex[,]
+        public static readonly Matrix CircularPolarizationOthogonalState = new Matrix(new Complex[,]
         {
             {1/Sqrt(2)}, 
             {new Complex(0, -1/Sqrt(2))}
         });
 
+        // TODO: ?
         public static readonly Matrix MysteryOperator = new Matrix(new Complex[,]
         {
             {new Complex(0, 0), new Complex(0, 0)},

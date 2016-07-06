@@ -121,15 +121,15 @@ namespace Quantum
         {
             //Console.WriteLine(Polarization.SomeState.ScalarProduct(Polarization.SomeState));
 
-            (Polarization.MysteryState.Abs()).Should().BeApproximately(1, Precision);
-            (Polarization.MysteryOthogonalState.Abs()).Should().BeApproximately(1, Precision);
+            (Polarization.CircularPolarizationState.Abs()).Should().BeApproximately(1, Precision);
+            (Polarization.CircularPolarizationOthogonalState.Abs()).Should().BeApproximately(1, Precision);
         }
 
         [Fact]
         public void mystery_states_are_orthogonal()
         {
-            var scalarProduct = Polarization.MysteryState.ScalarProduct(Polarization.MysteryOthogonalState);
-            Console.WriteLine(scalarProduct);
+            var scalarProduct = Polarization.CircularPolarizationState.ScalarProduct(Polarization.CircularPolarizationOthogonalState);
+            //Console.WriteLine(scalarProduct);
             scalarProduct.Real.Should().BeApproximately(0, Precision);
             scalarProduct.Imaginary.Should().BeApproximately(0, Precision);
         }
@@ -150,6 +150,17 @@ namespace Quantum
         public void mystery_operator_acting_on_mystery_orthogonal_state_gives_minus_orthogonal_mystery_state()
         {
             
+        }
+
+        [Theory]
+        [InlineData(0.4)]
+        [InlineData(-0.3)]
+        [InlineData(2)]        
+        public void circularly_polarized_foton_goes_through_theta_polarizer_with_half_probability(double theta)
+        {
+            var scalarProduct = Polarization.ThetaState(theta).ScalarProduct(Polarization.CircularPolarizationState);
+            Console.WriteLine(scalarProduct);
+            (Complex.Abs(scalarProduct) * Complex.Abs(scalarProduct)).Should().BeApproximately(0.5, Precision);
         }
     }
 }
