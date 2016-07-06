@@ -133,5 +133,23 @@ namespace Quantum
             scalarProduct.Real.Should().BeApproximately(0, Precision);
             scalarProduct.Imaginary.Should().BeApproximately(0, Precision);
         }
+
+        //[Fact]
+        public void mystery_operator_is_hermitian()
+        {
+
+        }
+
+        //[Fact]
+        public void mystery_operator_acting_on_mystery_state_gives_mystery_state()
+        {
+
+        }
+
+        //[Fact]
+        public void mystery_operator_acting_on_mystery_orthogonal_state_gives_minus_orthogonal_mystery_state()
+        {
+            
+        }
     }
 }

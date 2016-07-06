@@ -88,5 +88,29 @@ namespace Quantum
             result1.Should().Be(new Complex(2, 58));
             result2.Should().Be(new Complex(2, -58));
         }
+
+        [Fact]
+        public void is_identity()
+        {
+            var m = new Matrix(new Complex[,]
+            {
+                {1, 0},
+                {0, 1}
+            });
+
+            m.IsIdentity().Should().BeTrue();
+        }
+
+        [Fact]
+        public void is_not_identity()
+        {
+            var m = new Matrix(new Complex[,]
+            {
+                {0, 2},
+                {-4, 1}
+            });
+
+            m.IsIdentity().Should().BeFalse();
+        }
     }
 }

@@ -70,5 +70,11 @@ namespace Quantum
             {1/Sqrt(2)}, 
             {new Complex(0, -1/Sqrt(2))}
         });
+
+        public static readonly Matrix MysteryOperator = new Matrix(new Complex[,]
+        {
+            {new Complex(0, 0), new Complex(0, 0)},
+            {new Complex(0, 0), new Complex(0, 0)}
+        });
     }
 }

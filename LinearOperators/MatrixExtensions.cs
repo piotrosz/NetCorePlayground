@@ -22,6 +22,35 @@ namespace Quantum
             return result;
         }
 
+        public static bool IsUnitary(this Matrix m)
+        {
+            Matrix result = m.HermitianConjugate() * m;
+            return result.IsIdentity();
+        }
+
+        public static bool IsIdentity(this Matrix m)
+        {
+            bool result = true;
+
+            for (int row = 0; row < m.Rows; row++)
+            {
+                for (int column = 0; column < m.Columns; column++)
+                {
+                    if(row == column && m[row, column] != 1)
+                    {
+                        return false;
+                    }
+
+                    if(row != column && m[row, column] != 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return result;
+        }
+
         public static Matrix HermitianConjugate(this Matrix m)
         {
             var resultMatrix = new Matrix(m.Columns, m.Rows);
