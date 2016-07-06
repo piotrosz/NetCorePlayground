@@ -1,4 +1,5 @@
 using System;
+using static System.Math;
 using System.Numerics;
 using FluentAssertions;
 using Xunit;
@@ -7,6 +8,8 @@ namespace Quantum
 {
     public class PolarizationTests
     {
+        private const double Precision = 0.0001;
+
         [Fact]
         public void polarization_operator_acting_on_horizontal_state_gives_horizontal_state()
         {
@@ -23,22 +26,20 @@ namespace Quantum
         }
 
         [Fact]
-        public void state_vectors_are_orthogonal()
+        public void horizontal_and_vertical_state_vectors_are_orthogonal()
         {
             var result =  Polarization.FortyFiveDegreesStateVector.ScalarProduct(Polarization.MinusFortyFiveDegreesStateVector);
-            Complex.Abs(result).Should().BeLessThan(0.0001);
+            result.Real.Should().BeApproximately(0, Precision);
         }
 
         [Fact]
-        public void state_vectors_are_normalized()
+        public void horizontal_and_vertical_state_vectors_are_normalized()
         {
             var result1 = Polarization.FortyFiveDegreesStateVector.Abs();
             var result2 = Polarization.MinusFortyFiveDegreesStateVector.Abs();
 
-            Math.Abs(result1.Real - 1).Should().BeLessThan(0.00001);
-            Math.Abs(result2.Real - 1).Should().BeLessThan(0.00001);
-            Math.Abs(result1.Imaginary).Should().BeLessThan(0.00001);
-            Math.Abs(result2.Imaginary).Should().BeLessThan(0.00001);
+            (result1 - 1).Should().BeLessThan(Precision);
+            (result2 - 1).Should().BeLessThan(Precision);
         }
 
         [Fact]
@@ -47,8 +48,8 @@ namespace Quantum
             var result = Polarization.FortyFiveDegreesStateVector.ScalarProduct(Polarization.HorizontalStateVector);
             result *= result;
 
-            Math.Abs(result.Imaginary).Should().BeLessThan(0.0001);
-            Math.Abs(result.Real - 0.5).Should().BeLessThan(0.0001);
+            (result.Imaginary).Should().BeLessThan(Precision);
+            (result.Real - 0.5).Should().BeLessThan(Precision);
         }
         
         [Fact]
@@ -74,22 +75,22 @@ namespace Quantum
         {
             var result = Polarization.HorizontalStateVector.ScalarProduct(Polarization.ThetaState(theta));
 
-            Math.Abs(result.Real - Math.Cos(theta)).Should().BeLessThan(0.00001);
-            Math.Abs(result.Imaginary).Should().BeLessThan(0.00001);
+            (result.Real - Math.Cos(theta)).Should().BeLessThan(Precision);
+            (result.Imaginary).Should().BeLessThan(Precision);
         }
 
         [Theory]
         [InlineData(4, 2)]
         [InlineData(0.5, 0.1)]
-        public void pass_through_two_polarizers(double alpha, double beta)
+        public void when_foton_passe_through_two_polarizers_of_arbirtary_angle_then_probability_cos_square_alpha_minus_beta(double alpha, double beta)
         {
             var alphaVector = Polarization.ThetaState(alpha);
             var betaVector = Polarization.ThetaState(beta);
 
             var result = alphaVector.ScalarProduct(betaVector);
 
-            Math.Abs(Math.Cos(alpha - beta) - result.Real).Should().BeLessThan(0.00001);
-            Math.Abs(result.Imaginary).Should().BeLessThan(0.00001); 
+            (Math.Cos(alpha - beta) - result.Real).Should().BeLessThan(Precision);
+            (result.Imaginary).Should().BeLessThan(Precision); 
         }
 
         [Theory]
@@ -113,6 +114,24 @@ namespace Quantum
         public void theta_operator_is_hermitian(double theta)
         {
             Polarization.ThetaOperator(theta).IsHermitian().Should().BeTrue();
+        }
+
+        [Fact]
+        public void mystery_states_are_normalized()
+        {
+            //Console.WriteLine(Polarization.SomeState.ScalarProduct(Polarization.SomeState));
+
+            (Polarization.MysteryState.Abs()).Should().BeApproximately(1, Precision);
+            (Polarization.MysteryOthogonalState.Abs()).Should().BeApproximately(1, Precision);
+        }
+
+        [Fact]
+        public void mystery_states_are_orthogonal()
+        {
+            var scalarProduct = Polarization.MysteryState.ScalarProduct(Polarization.MysteryOthogonalState);
+            Console.WriteLine(scalarProduct);
+            scalarProduct.Real.Should().BeApproximately(0, Precision);
+            scalarProduct.Imaginary.Should().BeApproximately(0, Precision);
         }
     }
 }

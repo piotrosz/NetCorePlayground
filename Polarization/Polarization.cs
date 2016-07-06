@@ -58,5 +58,17 @@ namespace Quantum
             {Cos(2*theta), Sin(2*theta)},
             {Sin(2*theta), -Cos(2*theta)}
         });
+
+        public static readonly Matrix MysteryState = new Matrix(new Complex[,] 
+        {
+            {1/Sqrt(2)}, 
+            {new Complex(0, 1/Sqrt(2))},
+        });
+
+        public static readonly Matrix MysteryOthogonalState = new Matrix(new Complex[,]
+        {
+            {1/Sqrt(2)}, 
+            {new Complex(0, -1/Sqrt(2))}
+        });
     }
 }
