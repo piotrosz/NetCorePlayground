@@ -134,22 +134,24 @@ namespace Quantum
             scalarProduct.Imaginary.Should().BeApproximately(0, Precision);
         }
 
-        //[Fact]
+        [Fact]
         public void mystery_operator_is_hermitian()
         {
-
+            Polarization.MysteryOperator.IsHermitian().Should().BeTrue();
         }
 
-        //[Fact]
+        [Fact]
         public void mystery_operator_acting_on_mystery_state_gives_mystery_state()
         {
-
+            var result = Polarization.MysteryOperator * Polarization.CircularPolarizationState;
+            (result == Polarization.CircularPolarizationState).Should().BeTrue();
         }
 
-        //[Fact]
+        [Fact]
         public void mystery_operator_acting_on_mystery_orthogonal_state_gives_minus_orthogonal_mystery_state()
         {
-            
+            var result = Polarization.MysteryOperator * Polarization.CircularPolarizationOthogonalState;
+            (result == -1 * Polarization.CircularPolarizationOthogonalState).Should().BeTrue();
         }
 
         [Theory]
