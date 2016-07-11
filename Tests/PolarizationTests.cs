@@ -162,7 +162,7 @@ namespace Quantum
         {
             var scalarProduct = Polarization.ThetaState(theta).ScalarProduct(Polarization.CircularPolarizationState);
             //Console.WriteLine(scalarProduct);
-            (Complex.Abs(scalarProduct) * Complex.Abs(scalarProduct)).Should().BeApproximately(0.5, Precision);
+            Pow(Complex.Abs(scalarProduct), 2).Should().BeApproximately(0.5, Precision);
         }
     }
 }
