@@ -1,11 +1,9 @@
-# NetCorePlayground
-.NET Core Playgroud - quantum mechanics spin measurement
 
-Visual Studio Code test project
+Visual Studio Code .NET Core test project
 XUnit.NET, FluentAssertions
 
 dotnet restore
-dotnet run
+
 dotnet test
 
-
+http://theoreticalminimum.com/courses/quantum-mechanics/2012/winter
