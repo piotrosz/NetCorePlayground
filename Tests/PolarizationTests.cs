@@ -159,7 +159,7 @@ namespace Quantum
         public void circularly_polarized_foton_goes_through_theta_polarizer_with_half_probability(double theta)
         {
             var scalarProduct = Polarization.ThetaState(theta).ScalarProduct(Polarization.CircularPolarizationState);
-            Console.WriteLine(scalarProduct);
+            //Console.WriteLine(scalarProduct);
             (Complex.Abs(scalarProduct) * Complex.Abs(scalarProduct)).Should().BeApproximately(0.5, Precision);
         }
     }
