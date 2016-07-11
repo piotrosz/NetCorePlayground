@@ -137,20 +137,20 @@ namespace Quantum
         [Fact]
         public void mystery_operator_is_hermitian()
         {
-            Polarization.MysteryOperator.IsHermitian().Should().BeTrue();
+            Polarization.CircularPolarizationOperator.IsHermitian().Should().BeTrue();
         }
 
         [Fact]
         public void mystery_operator_acting_on_mystery_state_gives_mystery_state()
         {
-            var result = Polarization.MysteryOperator * Polarization.CircularPolarizationState;
+            var result = Polarization.CircularPolarizationOperator * Polarization.CircularPolarizationState;
             (result == Polarization.CircularPolarizationState).Should().BeTrue();
         }
 
         [Fact]
         public void mystery_operator_acting_on_mystery_orthogonal_state_gives_minus_orthogonal_mystery_state()
         {
-            var result = Polarization.MysteryOperator * Polarization.CircularPolarizationOthogonalState;
+            var result = Polarization.CircularPolarizationOperator * Polarization.CircularPolarizationOthogonalState;
             (result == -1 * Polarization.CircularPolarizationOthogonalState).Should().BeTrue();
         }
 

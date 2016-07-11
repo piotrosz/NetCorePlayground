@@ -72,7 +72,7 @@ namespace Quantum
         });
 
         // TODO: ?
-        public static readonly Matrix MysteryOperator = new Matrix(new Complex[,]
+        public static readonly Matrix CircularPolarizationOperator = new Matrix(new Complex[,]
         {
             {new Complex(0, 0), new Complex(0, 0)},
             {new Complex(0, 0), new Complex(0, 0)}
