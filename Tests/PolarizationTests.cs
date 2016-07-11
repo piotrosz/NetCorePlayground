@@ -140,29 +140,43 @@ namespace Quantum
             Polarization.CircularPolarizationOperator.IsHermitian().Should().BeTrue();
         }
 
-        [Fact]
-        public void mystery_operator_acting_on_mystery_state_gives_mystery_state()
-        {
-            var result = Polarization.CircularPolarizationOperator * Polarization.CircularPolarizationState;
-            (result == Polarization.CircularPolarizationState).Should().BeTrue();
-        }
+        // [Fact]
+        // public void mystery_operator_acting_on_mystery_state_gives_mystery_state()
+        // {
+        //     var result = Polarization.CircularPolarizationOperator * Polarization.CircularPolarizationState;
+        //     (result == Polarization.CircularPolarizationState).Should().BeTrue();
+        // }
 
-        [Fact]
-        public void mystery_operator_acting_on_mystery_orthogonal_state_gives_minus_orthogonal_mystery_state()
-        {
-            var result = Polarization.CircularPolarizationOperator * Polarization.CircularPolarizationOthogonalState;
-            (result == -1 * Polarization.CircularPolarizationOthogonalState).Should().BeTrue();
-        }
+        // [Fact]
+        // public void mystery_operator_acting_on_mystery_orthogonal_state_gives_minus_orthogonal_mystery_state()
+        // {
+        //     var result = Polarization.CircularPolarizationOperator * Polarization.CircularPolarizationOthogonalState;
+        //     (result == -1 * Polarization.CircularPolarizationOthogonalState).Should().BeTrue();
+        // }
+
+        // [Theory]
+        // [InlineData(0.4)]
+        // [InlineData(-0.3)]
+        // [InlineData(2)]        
+        // public void circularly_polarized_foton_goes_through_theta_polarizer_with_half_probability(double theta)
+        // {
+        //     var scalarProduct = Polarization.ThetaState(theta).ScalarProduct(Polarization.CircularPolarizationState);
+        //     //Console.WriteLine(scalarProduct);
+        //     Pow(Complex.Abs(scalarProduct), 2).Should().BeApproximately(0.5, Precision);
+        // }
 
         [Theory]
-        [InlineData(0.4)]
-        [InlineData(-0.3)]
-        [InlineData(2)]        
-        public void circularly_polarized_foton_goes_through_theta_polarizer_with_half_probability(double theta)
+        [InlineData(0.2)]
+        public void average_value_is_a_sandwich(double theta)
         {
-            var scalarProduct = Polarization.ThetaState(theta).ScalarProduct(Polarization.CircularPolarizationState);
-            //Console.WriteLine(scalarProduct);
-            Pow(Complex.Abs(scalarProduct), 2).Should().BeApproximately(0.5, Precision);
+            var operatorResult = Polarization.ThetaOperator(theta) * Polarization.HorizontalStateVector;
+            //Console.WriteLine(operatorResult);
+            //Console.WriteLine(Polarization.ThetaOperator(theta));
+
+            var result = Polarization.HorizontalStateVector.ScalarProduct(operatorResult);
+
+            result.Real.Should().BeApproximately(Cos(2*theta), Precision);
         }
+
     }
 }

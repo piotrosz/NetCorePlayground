@@ -102,9 +102,28 @@ namespace Quantum
             return result;
         }
 
+        public static Matrix Conjugate(this Matrix m)
+        {
+            for (int row = 0; row < m.Rows; row++)
+            {
+                for (int column = 0; column < m.Columns; column++)
+                {
+                    m[row, column] = Complex.Conjugate(m[row, column]);
+                }
+            }
+
+            return m;
+        }
+
         public static double Abs(this Matrix m)
         {
             return Complex.Abs(m.ScalarProduct(m));
+        }
+
+        // <a|P|a> = average value of observable associated with P
+        public static Complex Sandwich(this Matrix vector, Matrix @operator)
+        {
+            return vector.ScalarProduct(@operator * vector);
         }
     }
 }
