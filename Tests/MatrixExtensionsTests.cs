@@ -113,6 +113,18 @@ namespace Quantum
             m.IsIdentity().Should().BeFalse();
         }
 
+        [Fact]
+        public void identity_matrix_is_created()
+        {
+            var result = Matrix.GetIdentityMatrix(3, 3);
+
+            (result == new Matrix(new Complex[,] {
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}
+            })).Should().BeTrue();
+        }
+
         // [Fact]
         // public void is_unitary_matrix()
         // {
