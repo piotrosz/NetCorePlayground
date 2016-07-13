@@ -1,3 +1,4 @@
+*Learning quantum mechanics*
 
 Visual Studio Code .NET Core test project
 XUnit.NET, FluentAssertions
