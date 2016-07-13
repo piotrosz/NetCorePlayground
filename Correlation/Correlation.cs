@@ -27,6 +27,8 @@ namespace Quantum
 
             sigma_A_sigma_B_avg = sigma_A_sigma_B_avg / sigma_A_set.Length;
 
+            //WriteLine($"sigma_A_sigma_B_avg: {sigma_A_sigma_B_avg}");
+
             return sigma_A_sigma_B_avg - (sigma_A_avg * sigma_B_avg);
         }    
     }    
