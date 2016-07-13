@@ -2,6 +2,7 @@ using System;
 using System.Numerics;
 using FluentAssertions;
 using Xunit;
+using static System.Console;
 
 namespace Quantum
 {
@@ -23,6 +24,7 @@ namespace Quantum
             });
 
             var result = Tensor.Product(vector1, vector2);
+            //WriteLine(result);
 
             (result == new Matrix(new Complex[,]
             {
@@ -36,19 +38,19 @@ namespace Quantum
         [Fact]
         public void product_of_two_column_vectors2()
         {
-            var vector1 = new Matrix(new Complex[,] 
+            var v1 = new Matrix(new Complex[,] 
             {
                 {1}, 
                 {0}
             });
 
-            var vector2 = new Matrix(new Complex[,] 
+            var v2 = new Matrix(new Complex[,] 
             {
                 {1},
                 {0}
             });
 
-            var result = Tensor.Product(vector1, vector2);
+            var result = Tensor.Product(v1, v2);
 
             (result == new Matrix(new Complex[,]
             {
@@ -73,12 +75,14 @@ namespace Quantum
                 {2, 3}
             });
 
+            var result = Tensor.Product(m1, m2);
+            //WriteLine(result);
             (result == new Matrix(new Complex[,]
             {
-                { 1, 4, 2, 8 },
-                { 2, 3, 4, 6 },
-                { 3, 12, 8, 12},
-                { }
+                {1, 4,  2, 8},
+                {2, 3,  4, 6},
+                {3, 12, 4, 16},
+                {6, 9,  8, 12}
             })).Should().BeTrue();
         }
     }

@@ -7,39 +7,40 @@ namespace Quantum
     {
         public static Matrix Product(Matrix a, Matrix b)
         {
-            var result = new Matrix(a.Columns * b.Columns, a.Rows * b.Rows);
+            var result = new Matrix(a.Rows * b.Rows, a.Columns * b.Columns);            
+            int currentRow = 0, currentCol = 0;
 
-            for (int colA = 0; colA < a.Columns; colA++)
+            for (int rowA = 0; rowA < a.Rows; rowA++)
             {
-                for (int rowA = 0; rowA < a.Rows; rowA++)
+                for (int colA = 0; colA < a.Columns; colA++)
                 {
-                    WriteLine($"Now: {a[rowA, colA]}");
-                       
+                    Matrix temp = a[rowA, colA] * b;
+
+                    for (int row = 0; row < temp.Rows; row++)
+                    {
+                        for (int col = 0; col < temp.Columns; col++)
+                        {
+                            //WriteLine($"result[{currentRow + row}, {currentCol + col}] = temp[{row}, {col}]");
+                            result[currentRow + row, currentCol + col] = temp[row, col];
+                        }
+                    }
+
+                    currentCol += b.Columns;
+                    if(currentCol == result.Columns)
+                    {
+                        currentCol = 0;
+                    }
                 }
-            }   
 
-
+                currentRow += b.Rows;
+                if(currentRow == result.Rows)
+                {
+                    currentRow = 0;
+                }
+            }
             
-
             return result;
         }
     }
 }
 
-/*
-a11 b11  a11 b11 a21 b11  a11*b11 a11*b21 a21*b11 a21*b21
-a21 b21      b21     b21 
-*/
-
-/*
-a11 a12  b11 b12  a11 b11 b12 a12 b11 b12  a11*b11 a11*b12 a12*b11 a12*b12
-a21 a22  b21 b22      b21 b22     b21 b22  a11*b21 a11*b22 a12*b21 a12*b22
-                  a21 b11 b21 a22 b11 b12  
-                      b21 b22     b21 b22  
-*/
-
-/*
-a11 a12 a13  b11 b12 b13    a11 b11 a11 b12 
-a21 a22 a23  b21 b22 b23
-a31 a32 a33  b31 b32 b33
-*/
