@@ -53,5 +53,21 @@ namespace Quantum
 
             (result == -1 * SingletState.GetMatrix()).Should().BeTrue();
         }
+
+        [Fact]
+        public void tau_x_sigma_x_acting_on_singlet_gives_minus_singlet()
+        {
+            var result = Tensor.Product(PauliMatrices.sigma_x, PauliMatrices.sigma_x) * SingletState.GetMatrix();
+
+            (result == -1 * SingletState.GetMatrix()).Should().BeTrue();
+        }
+
+        [Fact]
+        public void tau_y_sigma_y_acting_on_singlet_gives_minus_singlet()
+        {
+            var result = Tensor.Product(PauliMatrices.sigma_y, PauliMatrices.sigma_y) * SingletState.GetMatrix();
+
+            (result == -1 * SingletState.GetMatrix()).Should().BeTrue();
+        }
     }
 }
