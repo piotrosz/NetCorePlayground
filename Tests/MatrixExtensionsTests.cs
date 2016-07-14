@@ -116,7 +116,7 @@ namespace Quantum
         [Fact]
         public void identity_matrix_is_created()
         {
-            var result = Matrix.GetIdentityMatrix(3, 3);
+            var result = Matrix.GetIdentityMatrix(3);
 
             (result == new Matrix(new Complex[,] {
                 {1, 0, 0},

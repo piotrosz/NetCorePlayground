@@ -19,7 +19,7 @@ namespace Quantum
             // <sigma_z> = <sing|sigma_z|sing>
             SingletState.GetMatrix()
                 .Sandwich(
-                    Tensor.Product(PauliMatrices.sigma_z, Matrix.GetIdentityMatrix(2, 2)))
+                    Tensor.Product(PauliMatrices.sigma_z, Matrix.GetIdentityMatrix(2)))
             .Should().Be(Complex.Zero);
         }
 
@@ -29,7 +29,7 @@ namespace Quantum
             // <sigma_x> = <sing|sigma_x|sing>
             SingletState.GetMatrix()
                 .Sandwich(
-                    Tensor.Product(PauliMatrices.sigma_x, Matrix.GetIdentityMatrix(2, 2)))
+                    Tensor.Product(PauliMatrices.sigma_x, Matrix.GetIdentityMatrix(2)))
             .Should().Be(Complex.Zero);
         }
 
@@ -39,7 +39,7 @@ namespace Quantum
             // <sigma_y> = <sing|sigma_y|sing>
             SingletState.GetMatrix()
                 .Sandwich(
-                    Tensor.Product(PauliMatrices.sigma_y, Matrix.GetIdentityMatrix(2, 2)))
+                    Tensor.Product(PauliMatrices.sigma_y, Matrix.GetIdentityMatrix(2)))
             .Should().Be(Complex.Zero);
         }
 

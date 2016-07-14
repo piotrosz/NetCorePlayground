@@ -125,5 +125,21 @@ namespace Quantum
         {
             return vector.ScalarProduct(@operator * vector);
         }
+
+        public static Complex Trace(this Matrix m)
+        {
+            if(m.Columns != m.Rows)
+            {
+                throw new Exception("Not a square matrix");
+            }
+
+            Complex result = Complex.Zero;
+            for (int i = 0; i < m.Columns; i++)
+            {
+                result += m[i, i];
+            }
+
+            return result;
+        }
     }
 }

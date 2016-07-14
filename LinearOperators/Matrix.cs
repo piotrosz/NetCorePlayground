@@ -176,9 +176,9 @@ namespace Quantum
             return true;
         }
 
-        public static Matrix GetIdentityMatrix(int rows, int columns)
+        public static Matrix GetIdentityMatrix(int size)
         {
-            var result = new Matrix(new Complex[rows, columns]);
+            var result = new Matrix(new Complex[size, size]);
 
             for (int row = 0; row < result.Rows; row++)
             {
